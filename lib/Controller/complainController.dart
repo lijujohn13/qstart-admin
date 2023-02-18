@@ -32,7 +32,7 @@ class ComplaintContoller extends GetxController {
           .doc(complaintid)
           .update({"status": 'Processing'});
       //update total complaint field in worker table
-      Map<String, dynamic> profiledata=Workerprofiledetails(workerid);
+      Map<String, dynamic> profiledata = Workerprofiledetails(workerid);
       //count complaint status for home screen
       ctrl.countComplaintStatus();
       loading.value = false;
@@ -63,14 +63,14 @@ class ComplaintContoller extends GetxController {
       loading.value = false;
     } catch (e) {
       Get.snackbar('Error', 'Unable to update');
-      loading.value=false;
+      loading.value = false;
     }
   }
+
   //Done Verified
-  DoneVerified(var complaintid,var userid)async{
-    try{
-      
-        loading.value = true;
+  DoneVerified(var complaintid, var userid) async {
+    try {
+      loading.value = true;
       //update status
       await db
           .collection('complaint')
@@ -78,37 +78,46 @@ class ComplaintContoller extends GetxController {
           .update({"status": 'Verified'});
 
       //update done count in user table
-     var docsiduser;
-     await db.collection('users').where('id', isEqualTo: userid ).limit(1).get().then((QuerySnapshot value) =>  value.docs.map((DocumentSnapshot document) { 
-        docsiduser=document.id;
-     }));
-     db.collection('users').doc(docsiduser).update({"donecount": FieldValue.increment(1)});
-     //
-      //update count of complaint in dashboard
-     ctrl.countComplaintStatus();
+      var docs;
+      var collection = db.collection('users');
+      var querySnapshot = await collection.get();
+      for (var queryDocumentSnapshot in querySnapshot.docs) {
+        //each docs is accessed to data var on each iteration
+        Map<String, dynamic> data = queryDocumentSnapshot.data();
 
-      loading.value=false;
-    }
-    catch(e){
+        //checking whether email id in docs on this iteration is equal to current user
+        if (data['id'] == userid) {
+          docs = queryDocumentSnapshot.id;
+          break;
+        }
+      }
+      print(docs);
+         db .collection('users')
+          .doc(docs)
+          .update({"donecount": FieldValue.increment(1)});
+      //
+      //update count of complaint in dashboard
+      ctrl.countComplaintStatus();
+
+      loading.value = false;
+    } catch (e) {
       Get.snackbar('Error', 'Unable to update');
-      loading.value=false;
+      loading.value = false;
     }
   }
 
-
-  //access worker table and return 
+  //access worker table and return
   //get data
-  Workerprofiledetails(var workerid) async{
-  
-  var collection = db.collection('users');
-  var querySnapshot = await collection.get();
-  for (var queryDocumentSnapshot in querySnapshot.docs) {
-    //each docs is accessed to data var on each iteration
+  Workerprofiledetails(var workerid) async {
+    var collection = db.collection('users');
+    var querySnapshot = await collection.get();
+    for (var queryDocumentSnapshot in querySnapshot.docs) {
+      //each docs is accessed to data var on each iteration
       Map<String, dynamic> data = queryDocumentSnapshot.data();
-      
+
       //checking whether email id in docs on this iteration is equal to current user
-      if(data['id']== workerid.toString()){
-          return data;
+      if (data['id'] == workerid.toString()) {
+        return data;
       }
     }
   }

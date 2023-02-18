@@ -14,8 +14,8 @@ Future DoneAcceptedPopup(BuildContext ctx, var complaintid, var userid) async {
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(25))),
           content: Container(
-            width: 250,
-            height: 250,
+            width: 230,
+            height: 230,
             padding: EdgeInsets.all(11),
             color: Colors.white,
             child: Obx(
@@ -27,7 +27,7 @@ Future DoneAcceptedPopup(BuildContext ctx, var complaintid, var userid) async {
                               style: GoogleFonts.amaranth(
                                   fontSize: 30, fontWeight: FontWeight.bold))),
                       SizedBox(
-                        height: 10,
+                        height: 15,
                       ),
                       Text(
                         'Conform',
@@ -39,7 +39,7 @@ Future DoneAcceptedPopup(BuildContext ctx, var complaintid, var userid) async {
                         style: GoogleFonts.poppins(fontSize: 18),
                       ),
                       SizedBox(
-                        height: 20,
+                        height: 30,
                       ),
                       Divider(
                         thickness: 1,
