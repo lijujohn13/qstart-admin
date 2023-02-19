@@ -40,13 +40,9 @@ dependencies:
   cloud_firestore: ^4.3.1
   firebase_core: ^2.4.1
   firebase_storage: ^11.0.10
-  flutter_admin_scaffold: ^1.1.2
-  fl_chart: ^0.60.0
   font_awesome_flutter: ^10.3.0
   google_fonts: ^4.0.3
   responsive_builder: ^0.5.0+1
-  responsive_table: ^0.2.0+2
-  searchbar_animation: ^0.0.4
   firebase_auth: ^4.2.5
 
  

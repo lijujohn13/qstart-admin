@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_admin_scaffold/admin_scaffold.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -17,7 +16,7 @@ class ComplaintPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AdminScaffold(
+    return Scaffold(
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
         leading: IconButton(

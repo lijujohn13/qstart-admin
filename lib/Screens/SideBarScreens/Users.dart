@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:qstart_admin_web/Controller/userController.dart';
 import 'package:qstart_admin_web/Screens/popup/profiledetails/userPopup.dart';
-import 'package:searchbar_animation/searchbar_animation.dart';
 
 import '../popup/complaintsortoneachpage/userComplaint.dart';
 
@@ -21,7 +19,7 @@ class UserScreen extends StatefulWidget {
 class _UserScreenState extends State<UserScreen> {
   bool isStudent = false;
   bool isEmployee = false;
-  final ctrl = Get.put(userController());
+ 
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -35,23 +33,7 @@ class _UserScreenState extends State<UserScreen> {
                 fontSize: 40, fontWeight: FontWeight.w400, color: Colors.grey),
           ),
         ),
-        //search
-        SearchBarAnimation(
-          textEditingController: ctrl.searchbar,
-          isOriginalAnimation: false,
-          buttonBorderColour: Colors.black45,
-          buttonWidget: Icon(Icons.search),
-          trailingWidget: Icon(Icons.search),
-          secondaryButtonWidget: Icon(Icons.close),
-          hintText: 'Search here for users',
-          cursorColour: Colors.black12,
-          onFieldSubmitted: (String value) {
-            debugPrint('onFieldSubmitted value $value');
-            setState(() {
-              ctrl.query = ctrl.search(value);
-            });
-          },
-        ),
+        
         SizedBox(
           height: 20,
         ),
