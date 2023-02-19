@@ -6,6 +6,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:qstart_admin_web/Screens/ScreenMain.dart';
 
+import '../Screens/login/LoginScreen.dart';
+
 class loginController extends GetxController{
   var status=false.obs;
 
@@ -31,6 +33,8 @@ class loginController extends GetxController{
   var isRequested=0.obs;
   var isPending=0.obs;
 
+  //change password
+  var changepass='qstartoffical@gmail.com';
 
 
    signin()async{
@@ -69,9 +73,25 @@ class loginController extends GetxController{
     }
   }
 
+  
+  //signout
+  signout()async{
+    await auth.signOut();
+    print('Currentuser');
+    print(auth.currentUser?.email);
+    loginemail.clear();
+    loginpass.clear();
+    // SharedPreferences prefs = await SharedPreferences.getInstance();
+    // prefs.clear();
+    Get.offAll(LoginScreen());
+  }
+
+  
+
   //reset password
   resetpassword()async{
     try{
+     
       await auth.sendPasswordResetEmail(email: resetEmail.text);
       Get.back();
       Get.snackbar("E-mail", "E-mail to reset password have been successfully send");
@@ -81,6 +101,18 @@ class loginController extends GetxController{
     }
   }
 
+  //change password (same as reset password but not using textedit controller)
+  changePassword()async{
+    try{
+     
+      await auth.sendPasswordResetEmail(email: changepass);
+      Get.back();
+      Get.snackbar("E-mail", "E-mail to reset password have been successfully send");
+    }
+    catch(e){
+      Get.snackbar("Error", "$e");
+    }
+  }
   countComplaintStatus()async{
     //count
    isdone.value=0;

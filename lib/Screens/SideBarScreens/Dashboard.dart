@@ -28,7 +28,7 @@ final ctrl = Get.put(loginController());
                   width: size.width,
                   decoration: BoxDecoration(
                       // gradient: AppColor().dashboardGradient,
-                      color: Colors.grey[200])),
+                      color: Colors.grey[100])),
                 
               //logo in a container with aligned bottomcenter in stack
               Align(
@@ -52,6 +52,7 @@ final ctrl = Get.put(loginController());
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text('QSTART',
+              
                 style: GoogleFonts.amaranth(
                   fontWeight: FontWeight.bold,
                   fontSize: 30
