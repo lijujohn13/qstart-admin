@@ -6,7 +6,7 @@ class inputBoxes
                   fillColor: Colors.grey[200],
                   border: OutlineInputBorder(
                       borderSide: const BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(12)),
+                      borderRadius: BorderRadius.circular(7)),
                   label: const Text('Email'),
                   contentPadding: const EdgeInsets.all(20.0),
                 );

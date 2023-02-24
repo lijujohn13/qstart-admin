@@ -32,18 +32,18 @@ class LoginScreen extends StatelessWidget {
                 color: Colors.grey[100],
                 child: Center(
                   child: Container(
-                    height: 400,
+                    height: 350,
                     width: 400,
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.all(
-                          Radius.circular(30),
+                          Radius.circular(10),
                         ),
                         boxShadow: [
                           BoxShadow(
-                            color: const Color.fromARGB(255, 97, 85, 85),
-                            spreadRadius: 0.7,
-                            blurRadius: 15,
+                            color: Colors.grey.shade300,
+                            spreadRadius: 0.3,
+                            blurRadius: 20,
                           )
                         ]),
                     child: Column(
@@ -52,15 +52,15 @@ class LoginScreen extends StatelessWidget {
                           Text(
                             'Login',
                             style: GoogleFonts.poppins(
-                              fontSize: 35,
-                              fontWeight: FontWeight.bold,
+                              fontSize: 24,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
                           SizedBox(
                             height: 20,
                           ),
                           Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 40),
+                            padding: EdgeInsets.symmetric(horizontal: 20),
                             child: Column(
                               children: [
                                 //email id
@@ -75,7 +75,7 @@ class LoginScreen extends StatelessWidget {
                                           label: const Text('Email ')),
                                 ),
                                 SizedBox(
-                                  height: 20,
+                                  height: 10,
                                 ),
                                 //password
                                 Obx(
@@ -91,7 +91,7 @@ class LoginScreen extends StatelessWidget {
                                           borderSide: const BorderSide(
                                               color: Colors.white),
                                           borderRadius:
-                                              BorderRadius.circular(12)),
+                                              BorderRadius.circular(7)),
                                       label: const Text('Password'),
                                       //hide and show button on password field
                                       suffixIcon: IconButton(
@@ -118,7 +118,7 @@ class LoginScreen extends StatelessWidget {
                                         onPressed: () {
                                           popUpBox(context);
                                         },
-                                        child: const Text('forget password')),
+                                        child:  Text('Forgot Password?',style: GoogleFonts.poppins(color: Color.fromARGB(255, 43, 49, 57)),)),
                                   ],
                                 ),
                                 SizedBox(
@@ -131,23 +131,23 @@ class LoginScreen extends StatelessWidget {
                                   },
                                   child: Obx(
                                     () => Container(
-                                      padding: EdgeInsets.all(20),
+                                      padding: EdgeInsets.all(15),
                                       decoration: BoxDecoration(
                                           color: const Color.fromARGB(
                                               255, 39, 183, 240),
                                           borderRadius:
-                                              BorderRadius.circular(12)),
+                                              BorderRadius.circular(5)),
                                       child: Center(
                                           child: (ctrl.status.value == true)
                                               ? const CircularProgressIndicator(
                                                   color: Colors.white,
                                                 )
-                                              : const Text(
+                                              :  Text(
                                                   'Sign In',
-                                                  style: TextStyle(
+                                                  style: GoogleFonts.poppins(
                                                       color: Colors.white,
                                                       fontWeight:
-                                                          FontWeight.bold,
+                                                          FontWeight.w500,
                                                       fontSize: 18),
                                                 )),
                                     ),
@@ -173,62 +173,76 @@ class LoginScreen extends StatelessWidget {
         context: ctx,
         builder: (ctx1) {
           return AlertDialog(
+            contentPadding: EdgeInsets.all(20),
+            title: Center(
+                    child: Text('Forgot Password',
+                        style: GoogleFonts.poppins(fontSize: 18,fontWeight: FontWeight.w500))),
+            actions: [
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 10.0),
+                    child: TextButton(
+                        onPressed: () {
+                          Navigator.of(ctx).pop();
+                        },
+                        child: const Text('Close')),
+                  ),
+                )
+            ],
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(25),
-                    bottomLeft: Radius.circular(25))),
+                borderRadius: BorderRadius.all(
+                    Radius.circular(13),
+                   )),
             content: Container(
               width: 300,
-              height: 250,
-              padding: EdgeInsets.all(11),
+              height: 110,
+             
               color: Colors.white,
               child: ListView(children: [
-                Center(
-                    child: Text('Forgot Password',
-                        style: GoogleFonts.poppins(fontSize: 30))),
-                SizedBox(
-                  height: 10,
-                ),
+                
+              
                 TextFormField(
                   controller: ctrl.resetEmail,
                   keyboardType: TextInputType.emailAddress,
-                  decoration: inputBoxes().maininputDecoration.copyWith(
+                  decoration: InputDecoration(
+                    //
+                    fillColor: Colors.grey[200],
+                  border: OutlineInputBorder(
+                      borderSide: const BorderSide(color: Colors.black),
+                      borderRadius: BorderRadius.circular(7)),
+                 
+                  contentPadding: const EdgeInsets.all(15.0),
+                    //
                       prefixIcon: const Icon(
                         Icons.email,
                       ),
                       label: const Text('Email Id')),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 11,
                 ),
                 GestureDetector(
                   onTap: () {
                     ctrl.resetpassword();
                   },
                   child: Container(
-                    height: 50,
+                    height: 45,
                     padding: EdgeInsets.all(2),
                     decoration: BoxDecoration(
                         color: const Color.fromARGB(255, 39, 183, 240),
-                        borderRadius: BorderRadius.circular(12)),
+                        borderRadius: BorderRadius.circular(7)),
                     child: const Center(
                         child: Text(
                       'Send Reset Link',
                       style: TextStyle(
                           color: Colors.white,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w500,
                           fontSize: 15),
                     )),
                   ),
                 ),
-                SizedBox(
-                  height: 20,
-                ),
-                TextButton(
-                    onPressed: () {
-                      Navigator.of(ctx).pop();
-                    },
-                    child: const Text('Close'))
+                
+                
               ]),
             ),
           );

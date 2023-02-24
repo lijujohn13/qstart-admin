@@ -17,39 +17,35 @@ class Footer extends StatelessWidget {
         padding: const EdgeInsets.only(top: 18,right: 18,left: 18),
         child: Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-              Container(
-                height: 200,
-                width: 200,
-                child: Image.asset('assets/images/footer2.png',fit: BoxFit.cover,),
-              ),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //   children: [
+             
 
-              //social media
-              Column(
-                children: [
-                    Text('Follow as on social media',style: GoogleFonts.poppins(fontWeight: FontWeight.w400,fontSize: 15),),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                          Image.asset('assets/images/instagram.png',fit: BoxFit.cover,height: 20,width: 20,),
-                          Image.asset('assets/images/linkedin.png',fit: BoxFit.cover,height: 20,width: 20,),
-                          Image.asset('assets/images/twitter.png',fit: BoxFit.cover,height: 20,width: 20,),
-                      ],
-                    )
-                ],
-              )
-            ]),
+            //   //social media
+            //   Column(
+            //     children: [
+            //         Text('Follow as on social media',style: GoogleFonts.poppins(fontWeight: FontWeight.w400,fontSize: 15),),
+            //         Row(
+            //           mainAxisAlignment: MainAxisAlignment.center,
+            //           children: [
+            //               Image.asset('assets/images/instagram.png',fit: BoxFit.cover,height: 20,width: 20,),
+            //               Image.asset('assets/images/linkedin.png',fit: BoxFit.cover,height: 20,width: 20,),
+            //               Image.asset('assets/images/twitter.png',fit: BoxFit.cover,height: 20,width: 20,),
+            //           ],
+            //         )
+            //     ],
+            //   )
+            // ]),
             Divider(thickness: 0.5,),
             Padding(
-              padding: const EdgeInsets.only(bottom: 15),
+              padding: const EdgeInsets.only(bottom: 20,top: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   
-              Icon(FontAwesomeIcons.solidCopyright,size: 15,),
-                  Text(' 2023  qstartoffical  |  All Rights Reserved',style: GoogleFonts.poppins(fontSize: 15,fontWeight: FontWeight.w400),)
+              Icon(FontAwesomeIcons.copyright,size: 15,),
+                  Text(' 2023  qstartoffical  |  All Rights Reserved',style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400),)
                 ],
               ),
             )

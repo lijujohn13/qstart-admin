@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:qstart_admin_web/Controller/loginController.dart';
 
@@ -41,7 +42,14 @@ class ComplaintContoller extends GetxController {
       ctrl.countComplaintStatus();
       loading.value = false;
     } catch (e) {
-      Get.snackbar('Error', '$e');
+      // Get.snackbar('Error', '$e');
+      Get.snackbar('Error', '$e',
+            colorText: Colors.white,
+            backgroundColor: Colors.redAccent.shade200,
+            icon: const Icon(Icons.add_alert),
+            maxWidth: double.infinity,
+            snackPosition: SnackPosition.BOTTOM,
+            margin: EdgeInsets.only(left: 1000, bottom: 30, right: 3));
       loading.value = false;
     }
   }
@@ -66,7 +74,14 @@ class ComplaintContoller extends GetxController {
       declineDescription.clear();
       loading.value = false;
     } catch (e) {
-      Get.snackbar('Error', 'Unable to update');
+      // Get.snackbar('Error', 'Unable to update');
+      Get.snackbar('Error Unable to update', '$e',
+            colorText: Colors.white,
+            backgroundColor: Colors.redAccent.shade200,
+            icon: const Icon(Icons.add_alert),
+            maxWidth: double.infinity,
+            snackPosition: SnackPosition.BOTTOM,
+            margin: EdgeInsets.only(left: 1000, bottom: 30, right: 3));
       loading.value = false;
     }
   }
@@ -105,7 +120,14 @@ class ComplaintContoller extends GetxController {
 
       loading.value = false;
     } catch (e) {
-      Get.snackbar('Error', 'Unable to update');
+      // Get.snackbar('Error', 'Unable to update');
+      Get.snackbar('Error Unable to update', '$e',
+            colorText: Colors.white,
+            backgroundColor: Colors.redAccent.shade200,
+            icon: const Icon(Icons.add_alert),
+            maxWidth: double.infinity,
+            snackPosition: SnackPosition.BOTTOM,
+            margin: EdgeInsets.only(left: 1000, bottom: 30, right: 3));
       loading.value = false;
     }
   }

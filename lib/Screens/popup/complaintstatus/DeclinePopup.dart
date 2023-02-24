@@ -49,8 +49,16 @@ Future DeclinePopup(BuildContext ctx, var complaintid) async {
                       GestureDetector(
                         onTap: () {
                           if (ctrl.declineDescription == '') {
-                            Get.snackbar('Description',
-                                'Add description before submitting');
+                            // Get.snackbar('Description',
+                            //     'Add description before submitting');
+                            Get.snackbar('Description', 'Add description before submitting',
+                                colorText: Colors.white,
+                                backgroundColor: Colors.redAccent.shade200,
+                                icon: const Icon(Icons.add_alert),
+                                maxWidth: double.infinity,
+                                snackPosition: SnackPosition.BOTTOM,
+                                margin: EdgeInsets.only(
+                                    left: 1000, bottom: 30, right: 3));
                             return;
                           }
                           //
