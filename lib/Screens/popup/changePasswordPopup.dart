@@ -15,13 +15,54 @@ Future changePasswordpopup(BuildContext ctx) async {
         context: ctx,
         builder: (ctx1) {
           return AlertDialog(
+            actions: [
+               Center(
+                 child: Padding(
+                   padding: const EdgeInsets.all(8.0),
+                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                     children: [
+                      GestureDetector(
+                        onTap: () async{
+                          
+                          ctrl.changePassword();
+                        
+                        },
+                        child: Container(
+                          height: 50,
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                              color: const Color.fromARGB(255, 39, 183, 240),
+                              borderRadius: BorderRadius.circular(12)),
+                          child: const Center(
+                              child: Text(
+                            'Send Reset Link',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15),
+                          )),
+                        ),
+                      ),
+                       TextButton(
+                                onPressed: () {
+                                  Navigator.of(ctx).pop();
+                                },
+                                child: const Text('Close')),
+                      
+                      SizedBox(height: 20,)
+                     ],
+                   ),
+                 ),
+               )
+            ],
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(
                     topRight: Radius.circular(25),
                     bottomLeft: Radius.circular(25))),
             content: Container(
-              width: 500,
-              height: 450,
+              width: 480,
+              height: 350,
               padding: EdgeInsets.all(11),
               color: Colors.white,
               child: SingleChildScrollView(
@@ -45,36 +86,9 @@ Future changePasswordpopup(BuildContext ctx) async {
                     SizedBox(
                       height: 20,
                     ),
-                    GestureDetector(
-                      onTap: () async{
-                        
-                        ctrl.changePassword();
-                      
-                      },
-                      child: Container(
-                        height: 50,
-                        padding: EdgeInsets.all(2),
-                        decoration: BoxDecoration(
-                            color: const Color.fromARGB(255, 39, 183, 240),
-                            borderRadius: BorderRadius.circular(12)),
-                        child: const Center(
-                            child: Text(
-                          'Send Reset Link',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15),
-                        )),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    TextButton(
-                        onPressed: () {
-                          Navigator.of(ctx).pop();
-                        },
-                        child: const Text('Close'))
+                    
+                   
+                   
                   ]),
                 ),
               ),

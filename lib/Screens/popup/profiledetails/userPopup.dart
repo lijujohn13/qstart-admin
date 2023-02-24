@@ -10,6 +10,15 @@ Future userPopUpBox(BuildContext ctx, DocumentSnapshot document) async {
       context: ctx,
       builder: (ctx1) {
         return AlertDialog(
+          actions: [
+             Center(
+               child: TextButton(
+                    onPressed: () {
+                      Navigator.of(ctx).pop();
+                    },
+                    child: Text('Close')),
+             )
+          ],
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.only(
                   topRight: Radius.circular(25),
@@ -84,17 +93,11 @@ Future userPopUpBox(BuildContext ctx, DocumentSnapshot document) async {
 
               //
               SizedBox(
-                height: 20,
+                height: 30,
               ),
 
-              SizedBox(
-                height: 20,
-              ),
-              TextButton(
-                  onPressed: () {
-                    Navigator.of(ctx).pop();
-                  },
-                  child: Text('Close'))
+             
+             
             ]),
           ),
         );

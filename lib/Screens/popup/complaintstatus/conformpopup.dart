@@ -6,12 +6,56 @@ import '../../../Controller/complainController.dart';
 
 //conform complaint popup
 final ctrl = Get.put(ComplaintContoller());
-Future conformpopup(
-    BuildContext ctx, String name, var complaintid, var workerid) async {
+Future conformpopup(BuildContext ctx, String name, var complaintid,
+    var workerid, var workerdocid) async {
   return showDialog(
       context: ctx,
       builder: (ctx1) {
         return AlertDialog(
+          title: Center(
+              child: Text('Conform ⚠️',
+                  style: GoogleFonts.amaranth(
+                      fontSize: 30, fontWeight: FontWeight.bold))),
+          actions: [
+            Center(
+              child: Column(
+                children: [
+                  Divider(
+                        thickness: 1,
+                      ),
+                  IntrinsicHeight(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        TextButton(
+                            onPressed: () {
+                              Get.back();
+                            },
+                            child: Text(
+                              'Close',
+                              style: GoogleFonts.poppins(fontSize: 15),
+                            )),
+                        VerticalDivider(
+                          thickness: 1,
+                        ),
+                        TextButton(
+                            onPressed: () {
+                              ctrl.AcceptandAssign(
+                                  complaintid, workerid, workerdocid);
+                              Get.offAll(ScreenMain());
+                            },
+                            child: Text(
+                              'Conform',
+                              style: GoogleFonts.poppins(
+                                  fontSize: 15, color: Colors.blueAccent),
+                            )),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(25))),
           content: Container(
@@ -23,10 +67,6 @@ Future conformpopup(
               () => (ctrl.loading.value == true)
                   ? CircularProgressIndicator()
                   : ListView(children: [
-                      Center(
-                          child: Text('Conform ⚠️',
-                              style: GoogleFonts.amaranth(
-                                  fontSize: 30, fontWeight: FontWeight.bold))),
                       SizedBox(
                         height: 10,
                       ),
@@ -42,37 +82,7 @@ Future conformpopup(
                       SizedBox(
                         height: 20,
                       ),
-                      Divider(
-                        thickness: 1,
-                      ),
-                      IntrinsicHeight(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            TextButton(
-                                onPressed: () {
-                                  Get.back();
-                                },
-                                child: Text(
-                                  'Close',
-                                  style: GoogleFonts.poppins(fontSize: 15),
-                                )),
-                            VerticalDivider(
-                              thickness: 1,
-                            ),
-                            TextButton(
-                                onPressed: () {
-                                  ctrl.AcceptandAssign(complaintid, workerid);
-                                  Get.offAll(ScreenMain());
-                                },
-                                child: Text(
-                                  'Conform',
-                                  style: GoogleFonts.poppins(
-                                      fontSize: 15, color: Colors.blueAccent),
-                                )),
-                          ],
-                        ),
-                      ),
+                      
                       SizedBox(
                         height: 20,
                       ),

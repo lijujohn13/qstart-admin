@@ -14,7 +14,13 @@ Future workerPopup(BuildContext ctx,DocumentSnapshot document) async
           builder: (ctx1) {
       return 
           AlertDialog(
-             
+             actions: [
+              Center(
+                child: TextButton(onPressed: (){
+                        Navigator.of(ctx).pop();
+                      }, child: Text('Close')),
+              )
+             ],
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topRight: Radius.circular(25),bottomLeft: Radius.circular(25))),
             content: Container(
               height:MediaQuery.of(ctx).size.height,
@@ -50,7 +56,7 @@ Future workerPopup(BuildContext ctx,DocumentSnapshot document) async
                     ),
                   SizedBox(height: 10,),
             Text(document['username'],
-                style: GoogleFonts.amaranth(
+                style: GoogleFonts.poppins(
                     letterSpacing: 2,
                     fontSize: 35,
                     fontWeight: FontWeight.bold,
@@ -61,7 +67,11 @@ Future workerPopup(BuildContext ctx,DocumentSnapshot document) async
             SizedBox(
               height: 20,
             ),
-
+            card(
+                title: 'Type',
+                // content: 'josephjibi33@gmail.com',
+                content: document['type'],
+                cardicon: Icon(FontAwesomeIcons.wrench)),
             card(
                 title: 'E-mail',
                 // content: 'josephjibi33@gmail.com',
@@ -89,12 +99,9 @@ Future workerPopup(BuildContext ctx,DocumentSnapshot document) async
                 cardicon: Icon(FontAwesomeIcons.hashtag)),
 
                  //
-                SizedBox(height: 20,),
+                SizedBox(height: 30,),
                  
-                    SizedBox(height: 20,),
-                    TextButton(onPressed: (){
-                      Navigator.of(ctx).pop();
-                    }, child: Text('Close'))
+                    
                 
               ]),
             ),

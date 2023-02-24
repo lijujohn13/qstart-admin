@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:qstart_admin_web/Screens/widgets/footer.dart';
 
 import '../DetailsPage/ComplaintPage.dart';
 import '../../helpers/colors.dart';
@@ -172,7 +173,8 @@ class _ComplaintScreenState extends State<ComplaintScreen> {
               rows: _createRows(snapshot.data!),
             );
           },
-        )
+        ),
+       
       ]),
     );
   }
@@ -185,7 +187,7 @@ class _ComplaintScreenState extends State<ComplaintScreen> {
         check = isRequested;
       } else if (documentSnapshot['status'] == 'Pending') {
         check = isPending;
-      } else if (documentSnapshot['status'] == 'processing') {
+      } else if (documentSnapshot['status'] == 'Processing') {
         check = isProcessing;
       } else if (documentSnapshot['status'] == 'Declined') {
         check = isDeclined;

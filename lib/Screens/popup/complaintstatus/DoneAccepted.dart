@@ -11,6 +11,46 @@ Future DoneAcceptedPopup(BuildContext ctx, var complaintid, var userid) async {
       context: ctx,
       builder: (ctx1) {
         return AlertDialog(
+          actions: [
+            Center(
+              child: Column(
+                children: [
+                  Divider(
+                          thickness: 1,
+                        ),
+                        IntrinsicHeight(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              TextButton(
+                                  onPressed: () {
+                                    Get.back();
+                                  },
+                                  child: Text(
+                                    'Close',
+                                    style: GoogleFonts.poppins(fontSize: 15),
+                                  )),
+                              VerticalDivider(
+                                thickness: 1,
+                              ),
+                              TextButton(
+                                  onPressed: () {
+                                    ctrl.DoneVerified(complaintid, userid);
+
+                                    Get.offAll(ScreenMain());
+                                  },
+                                  child: Text(
+                                    'Conform',
+                                    style: GoogleFonts.poppins(
+                                        fontSize: 15, color: Colors.blueAccent),
+                                  )),
+                            ],
+                          ),
+                        ),
+                ],
+              ),
+            )
+          ],
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(25))),
           content: Container(
@@ -41,38 +81,7 @@ Future DoneAcceptedPopup(BuildContext ctx, var complaintid, var userid) async {
                       SizedBox(
                         height: 30,
                       ),
-                      Divider(
-                        thickness: 1,
-                      ),
-                      IntrinsicHeight(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            TextButton(
-                                onPressed: () {
-                                  Get.back();
-                                },
-                                child: Text(
-                                  'Close',
-                                  style: GoogleFonts.poppins(fontSize: 15),
-                                )),
-                            VerticalDivider(
-                              thickness: 1,
-                            ),
-                            TextButton(
-                                onPressed: () {
-                                  ctrl.DoneVerified(complaintid, userid);
-
-                                  Get.offAll(ScreenMain());
-                                },
-                                child: Text(
-                                  'Conform',
-                                  style: GoogleFonts.poppins(
-                                      fontSize: 15, color: Colors.blueAccent),
-                                )),
-                          ],
-                        ),
-                      ),
+                      
                       SizedBox(
                         height: 20,
                       ),

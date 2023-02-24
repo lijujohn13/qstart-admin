@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:qstart_admin_web/Screens/popup/profiledetails/userPopup.dart';
+import 'package:qstart_admin_web/Screens/widgets/footer.dart';
 
 import '../popup/complaintsortoneachpage/userComplaint.dart';
 
@@ -98,7 +99,8 @@ class _UserScreenState extends State<UserScreen> {
               rows: _createRows(snapshot.data!),
             );
           },
-        )
+        ),
+       
       ]),
     );
   }

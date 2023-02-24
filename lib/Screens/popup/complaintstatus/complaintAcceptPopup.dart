@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../profiledetails/workerPopup.dart';
 import 'conformpopup.dart';
 
 //complaint accept popup
@@ -12,6 +14,23 @@ Future complaintAccecptPopup(BuildContext ctx, var complaintid) async {
       context: ctx,
       builder: (ctx1) {
         return AlertDialog(
+          actions: [
+             Center(
+               child: TextButton(
+                    onPressed: () {
+                      Get.back();
+                    },
+                    child: Text('Close')),
+             )
+          ],
+          title: Center(
+            child: Text('Work is assigned to :\n(Select any worker)',
+                        style: GoogleFonts.poppins(
+                          letterSpacing: 2,
+                          fontSize: 35,
+                          fontWeight: FontWeight.bold,
+                        )),
+          ),
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.only(
                   topRight: Radius.circular(25),
@@ -27,12 +46,7 @@ Future complaintAccecptPopup(BuildContext ctx, var complaintid) async {
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Work is assigned to :\n(Select any worker)',
-                      style: GoogleFonts.amaranth(
-                        letterSpacing: 2,
-                        fontSize: 35,
-                        fontWeight: FontWeight.bold,
-                      )),
+                  
                 ],
               ),
               SizedBox(
@@ -66,12 +80,8 @@ Future complaintAccecptPopup(BuildContext ctx, var complaintid) async {
                 height: 20,
               ),
 
-              Spacer(),
-              TextButton(
-                  onPressed: () {
-                    Get.back();
-                  },
-                  child: Text('Close'))
+             
+             
             ]),
           ),
         );
@@ -82,7 +92,7 @@ GestureDetector card(
     QueryDocumentSnapshot document, BuildContext context, var complaintid) {
   return GestureDetector(
     onTap: () {
-      conformpopup(context, document['username'], complaintid, document['id']);
+      conformpopup(context, document['username'], complaintid, document['id'],document.id);
     },
     child: Card(
       color: Color.fromARGB(255, 244, 245, 245),
@@ -104,6 +114,15 @@ GestureDetector card(
                 style: GoogleFonts.poppins(),
                 overflow: TextOverflow.ellipsis,
               ),
+              Spacer(),
+              GestureDetector(
+            onTap: () {
+              workerPopup(context, document);
+            },
+            child: Icon(
+              FontAwesomeIcons.solidEye,
+              color: Color.fromARGB(255, 143, 160, 245),
+            ))
             ]),
           ])),
     ),

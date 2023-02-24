@@ -12,6 +12,26 @@ Future dashboardComplaintpopup(BuildContext ctx, int count, String type) async {
       context: ctx,
       builder: (ctx1) {
         return AlertDialog(
+          title:  Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('Complaints - ' + type,
+                      style: GoogleFonts.poppins(
+                        letterSpacing: 2,
+                        fontSize: 35,
+                        fontWeight: FontWeight.bold,
+                      )),
+                ],
+              ),
+          actions: [
+             Center(
+               child: TextButton(
+                    onPressed: () {
+                      Get.back();
+                    },
+                    child: Text('Close')),
+             )
+          ],
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.only(
                   topRight: Radius.circular(25),
@@ -24,17 +44,7 @@ Future dashboardComplaintpopup(BuildContext ctx, int count, String type) async {
             child: ListView(children: [
               //
 
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text('Complaints - ' + type,
-                      style: GoogleFonts.amaranth(
-                        letterSpacing: 2,
-                        fontSize: 35,
-                        fontWeight: FontWeight.bold,
-                      )),
-                ],
-              ),
+             
               SizedBox(
                 height: 20,
               ),
@@ -80,16 +90,9 @@ Future dashboardComplaintpopup(BuildContext ctx, int count, String type) async {
               //
 
               //
-              SizedBox(
-                height: 40,
-              ),
-
-              Spacer(),
-              TextButton(
-                  onPressed: () {
-                    Get.back();
-                  },
-                  child: Text('Close'))
+            
+            
+             
             ]),
           ),
         );

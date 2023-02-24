@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:qstart_admin_web/Screens/popup/complaintsortoneachpage/workerComplaint.dart';
 import 'package:qstart_admin_web/Screens/popup/profiledetails/workerPopup.dart';
+import 'package:qstart_admin_web/Screens/widgets/footer.dart';
 
 class WorkerScreen extends StatefulWidget {
   static const String routeName = '\WorkerScreen';
@@ -64,7 +65,8 @@ class _WorkerScreenState extends State<WorkerScreen> {
               rows: _createRows(snapshot.data!),
             );
           },
-        )
+        ),
+     
       ]),
     ));
   }

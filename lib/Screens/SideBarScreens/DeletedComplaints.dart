@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:qstart_admin_web/Screens/DetailsPage/DeleteComplaintPage.dart';
+import 'package:qstart_admin_web/Screens/widgets/footer.dart';
 
 class DeletedComplaints extends StatelessWidget {
 
@@ -55,7 +56,7 @@ class DeletedComplaints extends StatelessWidget {
 
               );
             },
-          )
+          ),
         
       ]),
     );

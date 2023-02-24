@@ -14,6 +14,23 @@ Future workerComplaint(
       context: ctx,
       builder: (ctx1) {
         return AlertDialog(
+          actions: [
+             Center(
+               child: TextButton(
+                    onPressed: () {
+                      Get.back();
+                    },
+                    child: Text('Close')),
+             )
+          ],
+          title: Center(
+            child: Text('Complaints - ' + workername,
+                        style: GoogleFonts.poppins(
+                          letterSpacing: 2,
+                          fontSize: 35,
+                          fontWeight: FontWeight.bold,
+                        )),
+          ),
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.only(
                   topRight: Radius.circular(25),
@@ -29,12 +46,7 @@ Future workerComplaint(
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Complaints - ' + workername,
-                      style: GoogleFonts.amaranth(
-                        letterSpacing: 2,
-                        fontSize: 35,
-                        fontWeight: FontWeight.bold,
-                      )),
+                  
                 ],
               ),
               SizedBox(
@@ -84,15 +96,11 @@ Future workerComplaint(
 
               //
               SizedBox(
-                height: 40,
+                height: 30,
               ),
 
-              Spacer(),
-              TextButton(
-                  onPressed: () {
-                    Get.back();
-                  },
-                  child: Text('Close'))
+           
+             
             ]),
           ),
         );

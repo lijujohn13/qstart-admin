@@ -18,7 +18,7 @@ class ComplaintContoller extends GetxController {
   TextEditingController declineDescription = TextEditingController();
 
 //Accept work and assign it to a user
-  AcceptandAssign(var complaintid, var workerid) async {
+  AcceptandAssign(var complaintid, var workerid,var workerdocid) async {
     try {
       loading.value = true;
       //update worderid field in complaint table
@@ -32,12 +32,16 @@ class ComplaintContoller extends GetxController {
           .doc(complaintid)
           .update({"status": 'Processing'});
       //update total complaint field in worker table
-      Map<String, dynamic> profiledata = Workerprofiledetails(workerid);
+
+      // Map<String, dynamic> profiledata = Workerprofiledetails(workerid);
+
+      db.collection('worker').doc(workerdocid).update({"totalcomplaintcount": FieldValue.increment(1)});
+      
       //count complaint status for home screen
       ctrl.countComplaintStatus();
       loading.value = false;
     } catch (e) {
-      Get.snackbar('Error', 'Unable to update');
+      Get.snackbar('Error', '$e');
       loading.value = false;
     }
   }

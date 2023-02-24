@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:qstart_admin_web/Screens/popup/complaintsortoneachpage/dashboardComplaint.dart';
+import 'package:qstart_admin_web/Screens/widgets/footer.dart';
 import '../../Controller/loginController.dart';
 import '../widgets/card_item.dart';
 
@@ -133,55 +134,57 @@ final ctrl = Get.put(loginController());
                 ],
               ),
           ),
-             Row(
-               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-             GestureDetector(
-              onTap: (){
-     
-                dashboardComplaintpopup(context,ctrl.isRequested.toInt(),'Requested');
-              },
-               child: CardItem(
-                    
-                       title: "Requested",
-                       subtitle: "No. of complaints ",
-                       value: ctrl.isRequested.toString(),
-                       color1: Colors.purple.shade700,
-                       color2: Colors.purple,
+             Obx(
+              ()=> Row(
+                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                       children: [
+               GestureDetector(
+                onTap: (){
+                  
+                  dashboardComplaintpopup(context,ctrl.isRequested.toInt(),'Requested');
+                },
+                 child: CardItem(
+                      
+                         title: "Requested",
+                         subtitle: "No. of complaints ",
+                         value: ctrl.isRequested.toString(),
+                         color1: Colors.purple.shade700,
+                         color2: Colors.purple,
+                           ),
+               ),
+                         GestureDetector(
+                onTap: (){
+                     
+                  dashboardComplaintpopup(context,ctrl.isPending.toInt(),'Pending');
+                },
+                child: CardItem(
+                     
+                        title: "Pending",
+                        subtitle: "No. of complaints ",
+                        value: ctrl.isPending.toString(),
+                        color1: Colors.orange.shade700,
+                        color2: Colors.orange,
+                ),
+                         ),
+                         GestureDetector(
+                onTap: (){
+                 
+                       dashboardComplaintpopup(context,ctrl.isverified.toInt(),'Verified');
+                },
+                child: CardItem(
+                      
+                        title: "Done Verified",
+                        subtitle: "No. of complaints ",
+                        value: ctrl.isverified.toString(),
+                        color1: Colors.green.shade700,
+                        color2: Colors.green,
+                ),
+                         ),
+                       ],
                          ),
              ),
-            GestureDetector(
-              onTap: (){
-        
-                dashboardComplaintpopup(context,ctrl.isPending.toInt(),'Pending');
-              },
-              child: CardItem(
-                   
-                      title: "Pending",
-                      subtitle: "No. of complaints ",
-                      value: ctrl.isPending.toString(),
-                      color1: Colors.orange.shade700,
-                      color2: Colors.orange,
-              ),
-            ),
-            GestureDetector(
-              onTap: (){
-    
-          dashboardComplaintpopup(context,ctrl.isverified.toInt(),'Verified');
-              },
-              child: CardItem(
-                    
-                      title: "Done Verified",
-                      subtitle: "No. of complaints ",
-                      value: ctrl.isverified.toString(),
-                      color1: Colors.green.shade700,
-                      color2: Colors.green,
-              ),
-            ),
-          ],
-            ),
             
-           
+           Footer(),
         ],
       ),
     );
