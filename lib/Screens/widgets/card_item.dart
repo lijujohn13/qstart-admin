@@ -50,7 +50,7 @@ class CardItem extends StatelessWidget {
                          title,
                          style: GoogleFonts.poppins(
                           fontSize: titleSize,
-                         fontWeight: FontWeight.bold,
+                         fontWeight: FontWeight.w700,
                          color: Colors.white,
                          ),
                        ),
