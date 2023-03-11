@@ -14,18 +14,12 @@ Future workerPopup(BuildContext ctx,DocumentSnapshot document) async
           builder: (ctx1) {
       return 
           AlertDialog(
-             actions: [
-              Center(
-                child: TextButton(onPressed: (){
-                        Navigator.of(ctx).pop();
-                      }, child: Text('Close')),
-              )
-             ],
+
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topRight: Radius.circular(25),bottomLeft: Radius.circular(25))),
             content: Container(
               height:MediaQuery.of(ctx).size.height,
                width: 400,
-           
+
                padding: EdgeInsets.all(11.0),
             color: Colors.white,
               child: ListView(
@@ -37,41 +31,41 @@ Future workerPopup(BuildContext ctx,DocumentSnapshot document) async
                   children: [
                     Container(
                       height: 190,
-                width: 170,
+                      width: 170,
                       child: ClipRRect(
                           borderRadius: BorderRadius.circular(900),       //
                           child: (document['profileimg']=='')?
                           Image.asset(
                               fit: BoxFit.cover, 'assets/images/default.png'):
                               FadeInImage
+                              
                             (
+                              
                               image: NetworkImage(
+                             
                                   document['profileimg'],
-                                 
+                                    scale:500,
                                 ),
                                 placeholder: const AssetImage( 'assets/images/imageloading.gif'),
                                  fit: BoxFit.cover,
                             )
+                          
                               ),
                     ),
                   SizedBox(height: 10,),
             Text(document['username'],
-                style: GoogleFonts.poppins(
+                style: GoogleFonts.amaranth(
                     letterSpacing: 2,
                     fontSize: 35,
                     fontWeight: FontWeight.bold,
                     )),
-           
+
                   ],
                  ),
             SizedBox(
               height: 20,
             ),
-            card(
-                title: 'Type',
-                // content: 'josephjibi33@gmail.com',
-                content: document['type'],
-                cardicon: Icon(FontAwesomeIcons.wrench)),
+
             card(
                 title: 'E-mail',
                 // content: 'josephjibi33@gmail.com',
@@ -99,10 +93,13 @@ Future workerPopup(BuildContext ctx,DocumentSnapshot document) async
                 cardicon: Icon(FontAwesomeIcons.hashtag)),
 
                  //
-                SizedBox(height: 30,),
-                 
-                    
-                
+                SizedBox(height: 20,),
+
+                    SizedBox(height: 20,),
+                    TextButton(onPressed: (){
+                      Navigator.of(ctx).pop();
+                    }, child: Text('Close'))
+
               ]),
             ),
           );

@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:qstart_admin_web/Screens/ScreenMain.dart';
 import '../../../Controller/complainController.dart';
-import '../../../helpers/dimensions.dart';
 import '../../../helpers/inputBox.dart';
 
 final ctrl = Get.put(ComplaintContoller());
@@ -16,9 +15,9 @@ Future DeclinePopup(BuildContext ctx, var complaintid) async {
       builder: (ctx1) {
         return AlertDialog(
           shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(Dimensions.height25),
-                  bottomLeft: Radius.circular(Dimensions.height25))),
+              borderRadius: BorderRadius.all(
+                   Radius.circular(25),
+                 )),
           content: Container(
             width: 500,
             height: 300,
@@ -71,7 +70,7 @@ Future DeclinePopup(BuildContext ctx, var complaintid) async {
                           decoration: BoxDecoration(
                               color: const Color.fromARGB(255, 39, 183, 240),
                               borderRadius:
-                                  BorderRadius.circular(Dimensions.height12)),
+                                  BorderRadius.circular(12)),
                           child: const Center(
                               child: Text(
                             'Submit',
@@ -83,7 +82,7 @@ Future DeclinePopup(BuildContext ctx, var complaintid) async {
                         ),
                       ),
                       SizedBox(
-                        height: Dimensions.height20,
+                        height: 20,
                       ),
                       TextButton(
                           onPressed: () {

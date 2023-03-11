@@ -6,7 +6,7 @@ import 'package:get/get_navigation/get_navigation.dart';
 import 'package:qstart_admin_web/Screens/login/LoginScreen.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  await WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
       options: kIsWeb || Platform.isAndroid
           ? FirebaseOptions(

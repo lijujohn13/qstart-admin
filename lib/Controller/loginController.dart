@@ -1,7 +1,5 @@
-import 'dart:html';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -41,7 +39,7 @@ class loginController extends GetxController {
     try {
       status.value = true;
       await auth.signInWithEmailAndPassword(
-          email: 'qstartoffical@gmail.com', password: 'qstart12345');
+          email: loginemail.text.trim(), password: loginpass.text.trim());
       //check
       var value;
       var collection = FirebaseFirestore.instance.collection('Admin');

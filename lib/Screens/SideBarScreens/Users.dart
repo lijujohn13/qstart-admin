@@ -1,12 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:qstart_admin_web/Screens/popup/profiledetails/userPopup.dart';
-import 'package:qstart_admin_web/Screens/widgets/footer.dart';
-
 import '../popup/complaintsortoneachpage/userComplaint.dart';
+import '../popup/profiledetails/userPopup.dart';
 
 class UserScreen extends StatefulWidget {
   static const String routeName = '\UserScreen';
