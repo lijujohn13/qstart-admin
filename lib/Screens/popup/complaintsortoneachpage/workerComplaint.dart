@@ -15,21 +15,21 @@ Future workerComplaint(
       builder: (ctx1) {
         return AlertDialog(
           actions: [
-             Center(
-               child: TextButton(
-                    onPressed: () {
-                      Get.back();
-                    },
-                    child: Text('Close')),
-             )
+            Center(
+              child: TextButton(
+                  onPressed: () {
+                    Get.back();
+                  },
+                  child: Text('Close')),
+            )
           ],
           title: Center(
             child: Text('Complaints - ' + workername,
-                        style: GoogleFonts.poppins(
-                          letterSpacing: 2,
-                          fontSize: 35,
-                          fontWeight: FontWeight.bold,
-                        )),
+                style: GoogleFonts.poppins(
+                  letterSpacing: 2,
+                  fontSize: 35,
+                  fontWeight: FontWeight.bold,
+                )),
           ),
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.only(
@@ -45,9 +45,7 @@ Future workerComplaint(
 
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  
-                ],
+                children: [],
               ),
               SizedBox(
                 height: 20,
@@ -68,39 +66,38 @@ Future workerComplaint(
                         ),
                       ],
                     )
-                  : Expanded(
-                      child: new StreamBuilder(
-                          stream: FirebaseFirestore.instance
-                              .collection('complaint')
-                              .snapshots(),
-                          builder: (BuildContext context,
-                              AsyncSnapshot<QuerySnapshot> snapshot) {
-                            if (!snapshot.hasData)
-                              return LinearProgressIndicator();
-                            else
-                              return ListView(
-                                scrollDirection: Axis.vertical,
-                                shrinkWrap: true,
-                                children: snapshot.data!.docs.map((document) {
-                                  print('working in popup');
-                                  if (document['workerid'] == workerid) {
-                                    return card(document, ctx);
-                                  } else {
-                                    return SizedBox();
-                                  }
-                                }).toList(),
-                              );
-                          }),
-                    ),
-              //
+                  : Column(children: [
+                      Container(
+                        child: new StreamBuilder(
+                            stream: FirebaseFirestore.instance
+                                .collection('complaint')
+                                .snapshots(),
+                            builder: (BuildContext context,
+                                AsyncSnapshot<QuerySnapshot> snapshot) {
+                              if (!snapshot.hasData)
+                                return LinearProgressIndicator();
+                              else
+                                return ListView(
+                                  scrollDirection: Axis.vertical,
+                                  shrinkWrap: true,
+                                  children: snapshot.data!.docs.map((document) {
+                                    print('working in popup');
+                                    if (document['workerid'] == workerid) {
+                                      return card(document, ctx);
+                                    } else {
+                                      return SizedBox();
+                                    }
+                                  }).toList(),
+                                );
+                            }),
+                      ),
+                      //
+                    ]),
 
               //
               SizedBox(
                 height: 30,
               ),
-
-           
-             
             ]),
           ),
         );

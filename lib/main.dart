@@ -4,6 +4,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:qstart_admin_web/Screens/login/LoginScreen.dart';
+import 'package:qstart_admin_web/Screens/ScreenMain.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 
 void main() async {
   await WidgetsFlutterBinding.ensureInitialized();
@@ -32,8 +35,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
 
       // home: LoginPage(),
-      //
-      home: LoginScreen(),
+      
+      home: (FirebaseAuth.instance.currentUser == null)
+          ? LoginScreen()
+          : ScreenMain(),
     );
   }
 }

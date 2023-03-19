@@ -12,25 +12,25 @@ Future dashboardComplaintpopup(BuildContext ctx, int count, String type) async {
       context: ctx,
       builder: (ctx1) {
         return AlertDialog(
-          title:  Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text('Complaints - ' + type,
-                      style: GoogleFonts.poppins(
-                        letterSpacing: 2,
-                        fontSize: 35,
-                        fontWeight: FontWeight.bold,
-                      )),
-                ],
-              ),
+          title: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Complaints - ' + type,
+                  style: GoogleFonts.poppins(
+                    letterSpacing: 2,
+                    fontSize: 35,
+                    fontWeight: FontWeight.bold,
+                  )),
+            ],
+          ),
           actions: [
-             Center(
-               child: TextButton(
-                    onPressed: () {
-                      Get.back();
-                    },
-                    child: Text('Close')),
-             )
+            Center(
+              child: TextButton(
+                  onPressed: () {
+                    Get.back();
+                  },
+                  child: Text('Close')),
+            )
           ],
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.only(
@@ -44,7 +44,6 @@ Future dashboardComplaintpopup(BuildContext ctx, int count, String type) async {
             child: ListView(children: [
               //
 
-             
               SizedBox(
                 height: 20,
               ),
@@ -63,36 +62,35 @@ Future dashboardComplaintpopup(BuildContext ctx, int count, String type) async {
                         ),
                       ],
                     )
-                  : Expanded(
-                      child: new StreamBuilder(
-                          stream: FirebaseFirestore.instance
-                              .collection('complaint')
-                              .snapshots(),
-                          builder: (BuildContext context,
-                              AsyncSnapshot<QuerySnapshot> snapshot) {
-                            if (!snapshot.hasData)
-                              return LinearProgressIndicator();
-                            else
-                              return ListView(
-                                scrollDirection: Axis.vertical,
-                                shrinkWrap: true,
-                                children: snapshot.data!.docs.map((document) {
-                                  print('working in popup');
-                                  if (document['status'] == type) {
-                                    return card(document, ctx);
-                                  } else {
-                                    return SizedBox();
-                                  }
-                                }).toList(),
-                              );
-                          }),
-                    ),
-              //
+                  : Column(children: [
+                      Container(
+                        child: new StreamBuilder(
+                            stream: FirebaseFirestore.instance
+                                .collection('complaint')
+                                .snapshots(),
+                            builder: (BuildContext context,
+                                AsyncSnapshot<QuerySnapshot> snapshot) {
+                              if (!snapshot.hasData)
+                                return LinearProgressIndicator();
+                              else
+                                return ListView(
+                                  scrollDirection: Axis.vertical,
+                                  shrinkWrap: true,
+                                  children: snapshot.data!.docs.map((document) {
+                                    print('working in popup');
+                                    if (document['status'] == type) {
+                                      return card(document, ctx);
+                                    } else {
+                                      return SizedBox();
+                                    }
+                                  }).toList(),
+                                );
+                            }),
+                      ),
+                      //
 
-              //
-            
-            
-             
+                      //
+                    ])
             ]),
           ),
         );
